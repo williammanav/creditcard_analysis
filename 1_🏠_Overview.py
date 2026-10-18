@@ -1,4 +1,6 @@
+import os
 import streamlit as st
+
 # ===========================
 # PAGE CONFIG
 # ===========================
@@ -87,7 +89,13 @@ st.title("💳 Credit Card Fraud Detection System")
 st.subheader(
     "An end-to-end Machine Learning system for detecting fraudulent credit card transactions"
 )
-st.image("images/cc1.jpg", width="stretch")
+
+# SAFE IMAGE LOADING (FIXED ERROR HERE)
+image_path = "images/cc1.jpg"
+if os.path.exists(image_path):
+    st.image(image_path, use_container_width=True)
+else:
+    st.info("💡 Note: Overview image ('images/cc1.jpg') is not present in the repository, proceeding with layout.")
 
 st.markdown("---")
 
@@ -184,5 +192,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
